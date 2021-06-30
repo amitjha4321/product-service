@@ -21,6 +21,11 @@ public class ProductController {
         return this.service.getAll();
     }
 
+    @GetMapping("price-range")
+    public Flux<ProductDto> getByPriceRange(@RequestParam("min") int min, @RequestParam("max") int max ){
+        return this.service.getProductByPriceRange(min,max);
+    }
+
     @GetMapping("{id}")
     public Mono<ResponseEntity<ProductDto>> getProductById(@PathVariable("id") String id){
         return this.service.getProductById(id)
