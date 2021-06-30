@@ -49,4 +49,13 @@ public class ProductService {
         //and return this
 
     }
+//    public void deleteProduct(String id){
+//        this.repository.deleteById(id);
+//    }
+    //this would work well in traditional spring mvc but it will not work in reactive webflux it has to return mono of void
+    public Mono<Void> deleteProduct(String id){
+       return this.repository.deleteById(id);
+       //it has to be subscribed who ever calls the service they are kind of subscriber so it has to be subscribed to delete this
+        //otherwise it will not delete the product
+    }
 }
